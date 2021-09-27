@@ -1,8 +1,10 @@
 import faker from 'faker';
 
+import { Locatable } from './Map' ;
+
 faker.seed(new Date().getTime());
 
-export class User {
+export class User implements Locatable {
     name: string;
     location: {
         lat: number;
@@ -15,5 +17,9 @@ export class User {
             lat: parseFloat(faker.address.latitude()), 
             lng: parseFloat(faker.address.longitude())
         };
+    }
+    
+    markerContent(): string {
+        return `<h3>Name: ${this.name}</h3>`
     }
 }
