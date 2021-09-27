@@ -15,20 +15,25 @@ export class Map {
     }
 
     addMarker(target: Locatable): void {
-        new google.maps.Marker({
+        var content = target.markerContent();
+        let marker = new google.maps.Marker({
             map: this.map,
-            label: target.name,
             position: target.location
-        }).addListener('click', function() {
-            alert("Marker Clicked!");
+        });
+
+        marker.addListener('click', function() {
+            const infoWindow = new google.maps.InfoWindow({
+                content
+            });
+            infoWindow.open(this.map, marker);
         });
     }
 }
 
-interface Locatable {
-    name: string,
+export interface Locatable {
     location: {
         lat: number,
         lng: number
     }
+    markerContent(): string;
 }

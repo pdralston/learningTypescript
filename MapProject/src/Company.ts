@@ -9,4 +9,8 @@ export class Company extends User {
         this.name = faker.company.companyName();
         this.catchPhrase = faker.company.catchPhrase();
     }
+
+    markerContent(): string {
+        return super.markerContent() + `<div>Catchphrase: ${this.catchPhrase}</div>`;
+    }
 }
