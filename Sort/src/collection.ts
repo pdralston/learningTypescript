@@ -1,7 +1,7 @@
 import { Sortable } from "./interfaces";
 
 export class Collection implements Sortable {
-    length: number = 0;
+    get length(): number {return 0}
     compare(left: number, right: number): boolean {
         return true;
     }
@@ -10,6 +10,10 @@ export class Collection implements Sortable {
 
 export class ArrayCollection extends Collection {
     data: any[] =[];
+
+    get length(): number {
+        return this.data.length;
+    }
 
     swap(left: number, right: number): void {
         let leftVal = this.data[left];
@@ -20,8 +24,7 @@ export class ArrayCollection extends Collection {
 
 export class NumbersCollection extends ArrayCollection {
     constructor (public data: number[]) { 
-        super ();
-        this.length = data.length; 
+        super (); 
     }
 
     compare (left: number, right:number): boolean {
@@ -32,8 +35,12 @@ export class NumbersCollection extends ArrayCollection {
 export class StringCollection extends Collection {
     constructor (public data: string) {
         super();
-        this.length = data.length;
     }
+
+    get length(): number {
+        return this.data.length;
+    }
+
     compare (left: number, right:number): boolean {
         return this.data[left].toLowerCase() > this.data[right].toLowerCase();
     }
@@ -49,8 +56,8 @@ export class StringCollection extends Collection {
 export class StringArrCollection extends ArrayCollection {
     constructor (public data: string[]) {
         super();
-        this.length = data.length;
     }
+    
     compare (left: number, right:number): boolean {
         return this.data[left].toLowerCase() > this.data[right].toLowerCase();
     }
