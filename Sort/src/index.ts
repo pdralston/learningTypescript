@@ -1,9 +1,9 @@
 import { Bubble } from './bubble'
-import { NumbersCollection, StringArrCollection,StringCollection } from './collection';
+import { NumbersCollection, CharCollection,StringCollection } from './collection';
 
 var numbers = new NumbersCollection([2, 3, 1, -15, 42, -100]);
-var stringC = new StringCollection("Thisshouldalsogetsorted");
-var stringA = new StringArrCollection(['hello','darkness','My','oLd', 'fRiend']);
+var stringC = new CharCollection("Thisshouldalsogetsorted");
+var stringA = new StringCollection(['hello','darkness','My','oLd', 'fRiend']);
 var sorted = new Bubble(numbers);
 var sorted2 = new Bubble(stringA);
 var sorted3 = new Bubble(stringC);

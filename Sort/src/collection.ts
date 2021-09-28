@@ -32,7 +32,7 @@ export class NumbersCollection extends ArrayCollection {
     }
 }
 
-export class StringCollection extends Collection {
+export class CharCollection extends Collection {
     constructor (public data: string) {
         super();
     }
@@ -53,7 +53,7 @@ export class StringCollection extends Collection {
     }
 }
 
-export class StringArrCollection extends ArrayCollection {
+export class StringCollection extends ArrayCollection {
     constructor (public data: string[]) {
         super();
     }
