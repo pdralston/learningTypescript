@@ -1,7 +1,6 @@
-import { Sorter } from './interfaces'
 import { Collection } from './collection'
 
-export class Bubble implements Sorter {
+export class Bubble {
     constructor (private data: Collection) {}
     public sort(): void {
         let swapped: boolean;
