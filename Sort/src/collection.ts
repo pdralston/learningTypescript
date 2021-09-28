@@ -1,7 +1,7 @@
 import { Sortable } from "./interfaces";
 
 export class Collection implements Sortable {
-    get length(): number {return 0}
+    get length(): number { return 0; }
     compare(left: number, right: number): boolean {
         return true;
     }
@@ -57,7 +57,7 @@ export class StringArrCollection extends ArrayCollection {
     constructor (public data: string[]) {
         super();
     }
-    
+
     compare (left: number, right:number): boolean {
         return this.data[left].toLowerCase() > this.data[right].toLowerCase();
     }
