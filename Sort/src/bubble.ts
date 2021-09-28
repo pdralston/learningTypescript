@@ -1,15 +1,16 @@
-import { Collection } from './collection'
-
-export class Bubble {
-    constructor (private data: Collection) {}
+export abstract class Bubble {
+    abstract length: number;
+    abstract compare(left: number, right: number): boolean;
+    abstract swap(left: number, right: number): void;
+    
     public sort(): void {
         let swapped: boolean;
         do {
             swapped = false;
-            for (let i = 0, j = 1; j < this.data.length; ++i, ++j){
-                if (this.data.compare(i, j)) {
+            for (let i = 0, j = 1; j < this.length; ++i, ++j){
+                if (this.compare(i, j)) {
                     swapped = true;
-                    this.data.swap(i, j)
+                    this.swap(i, j)
                 }
             }
         } while (swapped === true);

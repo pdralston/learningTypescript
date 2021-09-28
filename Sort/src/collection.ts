@@ -1,20 +1,14 @@
-import { Sortable } from "./interfaces";
+import { Bubble } from "./bubble"
 
-export class Collection implements Sortable {
-    get length(): number { return 0; }
-    compare(left: number, right: number): boolean {
-        return true;
-    }
-    swap(left: number, right: number): void {}
-}
-
-export class ArrayCollection extends Collection {
+export abstract class ArrayCollection extends Bubble {
     data: any[] =[];
 
     get length(): number {
         return this.data.length;
     }
 
+    abstract compare(left: number, right: number): boolean;
+    
     swap(left: number, right: number): void {
         let leftVal = this.data[left];
         this.data[left] = this.data[right];
@@ -32,7 +26,7 @@ export class NumbersCollection extends ArrayCollection {
     }
 }
 
-export class CharCollection extends Collection {
+export class CharCollection extends Bubble {
     constructor (public data: string) {
         super();
     }
